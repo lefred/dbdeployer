@@ -28,6 +28,7 @@ import (
 	"github.com/ProxySQL/dbdeployer/downloads"
 	"github.com/ProxySQL/dbdeployer/globals"
 	"github.com/ProxySQL/dbdeployer/providers"
+	mariadbprovider "github.com/ProxySQL/dbdeployer/providers/mariadb"
 	mysqlprovider "github.com/ProxySQL/dbdeployer/providers/mysql"
 	postgresqlprovider "github.com/ProxySQL/dbdeployer/providers/postgresql"
 	proxysqlprovider "github.com/ProxySQL/dbdeployer/providers/proxysql"
@@ -152,6 +153,7 @@ func init() {
 	}
 	_ = proxysqlprovider.Register(providers.DefaultRegistry)
 	_ = postgresqlprovider.Register(providers.DefaultRegistry)
+	_ = mariadbprovider.Register(providers.DefaultRegistry)
 	cobra.OnInitialize(checkDefaultsFile)
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 	rootCmd.PersistentFlags().StringVar(&defaults.CustomConfigurationFile, globals.ConfigLabel, defaults.ConfigurationFile, "configuration file")
